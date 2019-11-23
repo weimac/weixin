@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dudu-service" />
+        <module name="dudu-admin" />
+        <module name="dudu-mapper" />
+        <module name="dudu-weixin" />
+        <module name="dudu-pojo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dudu" target="1.8" />
+      <module name="dudu-admin" target="1.8" />
+      <module name="dudu-common" target="1.7" />
+      <module name="dudu-mapper" target="1.7" />
+      <module name="dudu-pojo" target="1.7" />
+      <module name="dudu-service" target="1.7" />
+      <module name="dudu-weixin" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dudu-admin" options="-parameters" />
+      <module name="dudu-mapper" options="-parameters" />
+      <module name="dudu-service" options="-parameters" />
+      <module name="dudu-weixin" options="-parameters" />
+    </option>
+  </component>
+</project>
