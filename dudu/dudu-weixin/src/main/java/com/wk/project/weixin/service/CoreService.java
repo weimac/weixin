@@ -145,7 +145,7 @@ public class CoreService {
 //					respContent = result;
 //				}
 				//System.out.println("accessToken得到的值为:"+ AccessTokenThread.access_token_val);
-				//System.out.println("accessToken得到的值为:"+ accessTokenRedis.getAccessTokenVal());
+				System.out.println("accessToken得到的值为:"+ accessTokenRedis.getAccessTokenVal());
 
 				int i=0;
 				String result=tulingUtil.sendMessage(content,strs[0]);
