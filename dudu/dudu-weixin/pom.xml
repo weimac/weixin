@@ -130,6 +130,11 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <!-- 微信需要结束 -->
+        <dependency>
+            <groupId>com.wk</groupId>
+            <artifactId>dudu-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

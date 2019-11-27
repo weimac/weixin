@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息界面</title>
+</head>
+<body>
+
+<p th:text="${userInfo.nickname}"></p>
+<img src="" th:src="${userInfo.headimgurl}">
+<p th:text="${userInfo.sex}"></p>
+<p th:text="${userInfo.city}"></p>
+</body>
+</html>

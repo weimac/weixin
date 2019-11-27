@@ -12,6 +12,7 @@ import com.wk.project.weixin.api.accessToken.AccessTokenRedis;
 import com.wk.project.weixin.api.accessToken.AccessTokenThread;
 import com.wk.project.weixin.api.hitokoto.HitokotoUtil;
 import com.wk.project.weixin.api.tuling.TulingUtil;
+import com.wk.project.weixin.userInfo.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,9 @@ public class CoreService {
 
 	@Autowired
 	private AccessTokenRedis accessTokenRedis;
+
+	@Autowired
+	private UserInfoService userInfoService;
 
 	/**
 	 * 处理微信发来的请求
@@ -104,48 +108,8 @@ public class CoreService {
 			// 文本消息
 			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
 
-//				int i=0;
-//				String result=tulingUtil.sendMessage(content,strs[i]);
-//				if(result.equals("请求次数超限制!")) {
-//					i =i+1;
-//					System.out.println("正在执行的机器人" + strs[i]);
-//					String result2=tulingUtil.sendMessage(content,strs[i]);
-//					if(result2.equals("请求次数超限制!")){
-//						i=i+1;
-//						System.out.println("正在执行的机器人" + strs[i]);
-//						String result3=tulingUtil.sendMessage(content,strs[i]);
-//						if(result3.equals("请求次数超限制!")){
-//							i=i+1;
-//							System.out.println("正在执行的机器人" + strs[i]);
-//							String result4=tulingUtil.sendMessage(content,strs[i]);
-//							if(result4.equals("请求次数超限制!")){
-////								i=4;
-////								System.out.println("正在执行的机器人" + strs[i]);
-////								String result5=tulingUtil.sendMessage(content,strs[i]);
-////								if(result5.equals("请求次数超限制!")){
-//									i=0;
-//									System.out.println("正在执行的机器人" + strs[i]);
-//									String result6=tulingUtil.sendMessage(content,strs[i]);
-//									respContent = result6;
-////								}else{
-////									respContent = result5;
-////								}
-//							}else{
-//								respContent = result4;
-//							}
-//
-//						}else{
-//							respContent = result3;
-//						}
-//					}else{
-//						respContent = result2;
-//					}
-//
-//				}else{
-//					respContent = result;
-//				}
 				//System.out.println("accessToken得到的值为:"+ AccessTokenThread.access_token_val);
-				System.out.println("accessToken得到的值为:"+ accessTokenRedis.getAccessTokenVal());
+				//System.out.println("accessToken得到的值为:"+ accessTokenRedis.getAccessTokenVal());
 
 				int i=0;
 				String result=tulingUtil.sendMessage(content,strs[0]);
@@ -188,7 +152,16 @@ public class CoreService {
 				String eventType = requestMap.get("Event");
 				// 订阅
 				if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
-					
+					//收集用户的个人详情
+					/**
+					 * 1.收集用户openid
+					 * 2.根据openid向服务器发送请求得到用户信息
+					 * 3.得到用户信息jsonObject转换成javaBean
+					 * 4.写入到数据库中
+					 */
+					userInfoService.userInfo(fromUserName);
+
+
 					respContent = "欢迎关注微信公众号";
 				}
 				// 取消订阅
