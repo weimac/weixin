@@ -1,10 +1,8 @@
 package com.wk.project.weixin.oauth;
 
 import com.wk.project.weixin.main.MenuManager;
-import com.wk.project.weixin.pojo.Menu;
 import com.wk.project.weixin.util.WeixinUtil;
 import net.sf.json.JSONObject;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,7 +27,7 @@ public class WeiOauth {
     @RequestMapping("weixin")
     public void oauth(HttpServletResponse response) throws IOException {
         //授权后重定向的回调链接地址,请使用urlEncode对链接进行处理
-        String rediect_url="http://hu6ifj.natappfree.cc/"+"oauth/invoke";
+        String rediect_url="http://ex8xgj.natappfree.cc/"+"oauth/invoke";
         //需要把地址进行转义
         try {
             rediect_url=URLEncoder.encode(rediect_url,"UTF-8");
