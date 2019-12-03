@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Description:
@@ -64,5 +64,37 @@ public class UserController {
         return num+"";
     }
 
+
+    /**
+     * 页面跳转的controller操作
+     */
+    /**
+     *登录功能
+     */
+    @RequestMapping("tologin") // /user/tologin
+    public String toLogin(HttpServletRequest request) {
+        String wid=request.getParameter("wid");
+        request.setAttribute("wid",wid);
+        return "weixin/login";
+    }
+
+
+    /**
+     * 非权限页面
+     */
+    @RequestMapping("unauth")  // /user/unauth
+    public String unauth() {
+        return  "weixin/unauth";
+    }
+
+    /**
+     * 抢单界面
+     */
+    @RequestMapping("meetingGrab")  // /user/meetingGrap
+        public String meetingGrab(HttpServletRequest request) {
+            String uid=request.getParameter("uid");
+            request.setAttribute("uid",uid);
+        return "weixin/meeting/meetingGrab";
+    }
 
 }

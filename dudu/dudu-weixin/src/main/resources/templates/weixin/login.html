@@ -62,7 +62,7 @@
     <div style="text-align:center;"><img th:src="@{/images/dada_logo1.png}" style="width: 100%;"></div>
 
     <div data-role="content" class="content">
-        <input th:value="${wid}" type="hidden" name="wid" id="wid" value=""/>
+        <input th:value="${wid}" type="text" name="wid" id="wid" value=""/>
         <form id="login_params" method="post" >
             <div>
                 <input type="text" id="email" name="email" placeholder="公司邮箱" style="background: url('${pageContext.request.contextPath}/images/ic_mail.png') no-repeat 5px;background-size: 30px;padding-left:40px;">
